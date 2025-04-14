@@ -1,9 +1,23 @@
-const Button = (props) => {
+const Button = ({text, color, children}) => {
+  // 이벤트 객체
+  const onClickButton = (e) => {
+    console.log(e);
+    console.log(text);
+  };
   return (
-    <button style={{ color: props.color }}>
-      {props.color ? `${props.text} - ${props.color}` : props.text}
+    <button 
+    onClick={onClickButton}
+    // onMouseEnter={onClickButton}
+    style={{ color: color }}
+    >
+     {text} - {color}
+     {children}
     </button>
   );
+};
+
+Button.defaultProps = {
+  color:"black",
 };
 
 export default Button;
