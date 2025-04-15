@@ -1,20 +1,27 @@
 import "./App.css";
-import Button from "./components/button";
+import { useState } from "react";
 
-// 컴포넌트 함수는 무조건 첫글자 대문자
 function App() {
-  const buttonProps = {
-    text: "메일",
-    color: "red",
-    a: 1,
-    b: 2,
-    c: 3,
-  };
+  const [count, setCount] = useState(0);
+  const [light, setLight] = useState("OFF");
+  //let 같은 일반반 변수 선언해서 값을 바꿔도 리액트 컴포넌트가 리렌더링 되지 않음
+  // state 를 통해서 바꿔야지만 변경이 가능함
   return (
     <>
-      <Button {...buttonProps} />
-      <Button text={"카페"} />
-      <Button text={"블로그"} />
+      <div>
+        <h1>{light}</h1>
+        <button
+          onClick={() => {
+            setLight(light === "ON" ? "OFF" : "ON");
+          }}
+        >
+          {light === "ON" ? "끄기" : "켜기"}
+        </button>
+      </div>
+      <div>
+        <h1>{count}</h1>
+        <button onClick={() => setCount(count + 1)}>+</button>
+      </div>
     </>
   );
 }
